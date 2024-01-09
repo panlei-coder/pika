@@ -560,6 +560,11 @@ class PikaServer : public pstd::noncopyable {
   void ProcessCronTask();
   double HitRatio();
 
+/*
+  * disable compact
+  */
+  void DisableCompact();
+
   /*
    * lastsave used
    */
@@ -578,7 +583,7 @@ class PikaServer : public pstd::noncopyable {
   void AutoUpdateNetworkMetric();
   void PrintThreadPoolQueueStatus();
   int64_t GetLastSaveTime(const std::string& dump_dir);
-  
+
   std::string host_;
   int port_ = 0;
   time_t start_time_s_ = 0;

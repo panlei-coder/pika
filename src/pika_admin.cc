@@ -793,7 +793,9 @@ void ShutdownCmd::DoInitial() {
 // no return
 void ShutdownCmd::Do(std::shared_ptr<Slot> slot) {
   DLOG(WARNING) << "handle \'shutdown\'";
+  slot->DbRWUnLock();
   g_pika_server->Exit();
+  slot->DbRWLockReader();
   res_.SetRes(CmdRes::kNone);
 }
 
